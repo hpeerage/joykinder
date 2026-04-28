@@ -1,0 +1,16 @@
+{
+  "short_name": "조이킨더",
+  "name": "조이킨더 통합 관리 포털",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4A6741",
+  "background_color": "#F7F3E9"
+}

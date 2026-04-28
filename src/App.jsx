@@ -9,6 +9,7 @@ import MedicationForm from './pages/parent/MedicationForm';
 import DailyReport from './pages/parent/DailyReport';
 import InfoView from './pages/parent/InfoView';
 import useAuthStore from './store/useAuthStore';
+import PullToRefresh from './components/PullToRefresh';
 import './index.css';
 
 // Protected Route Component
@@ -29,72 +30,77 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin/login" element={<Login />} />
-        
-        {/* Admin Route */}
-        <Route 
-          path="/admin" 
-          element={
-            <ProtectedRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </ProtectedRoute>
-          } 
-        />
+      <PullToRefresh>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin/login" element={<Login />} />
+          
+          {/* Admin Route */}
+          <Route 
+            path="/admin" 
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } 
+          />
 
-        {/* Teacher Route */}
-        <Route 
-          path="/teacher" 
-          element={
-            <ProtectedRoute allowedRoles={['teacher']}>
-              <TeacherDashboard />
-            </ProtectedRoute>
-          } 
-        />
+          {/* Teacher Route */}
+          <Route 
+            path="/teacher" 
+            element={
+              <ProtectedRoute allowedRoles={['teacher', 'admin']}>
+                <TeacherDashboard />
+              </ProtectedRoute>
+            } 
+          />
 
-        {/* Parent Routes */}
-        <Route 
-          path="/parent" 
-          element={
-            <ProtectedRoute allowedRoles={['parent']}>
-              <ParentDashboard />
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/parent/medication" 
-          element={
-            <ProtectedRoute allowedRoles={['parent']}>
-              <MedicationForm />
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/parent/reports" 
-          element={
-            <ProtectedRoute allowedRoles={['parent']}>
-              <DailyReport />
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/parent/shuttle" 
-          element={
-            <ProtectedRoute allowedRoles={['parent']}>
-              <InfoView type="shuttle" />
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/parent/menu" 
-          element={
-            <ProtectedRoute allowedRoles={['parent']}>
-              <InfoView type="menu" />
-            </ProtectedRoute>
-          } 
-        />
-      </Routes>
+          {/* Parent Routes */}
+          <Route 
+            path="/parent" 
+            element={
+              <ProtectedRoute allowedRoles={['parent']}>
+                <ParentDashboard />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/parent/medication" 
+            element={
+              <ProtectedRoute allowedRoles={['parent']}>
+                <MedicationForm />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/parent/reports" 
+            element={
+              <ProtectedRoute allowedRoles={['parent']}>
+                <DailyReport />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/parent/shuttle" 
+            element={
+              <ProtectedRoute allowedRoles={['parent']}>
+                <InfoView type="shuttle" />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/parent/menu" 
+            element={
+              <ProtectedRoute allowedRoles={['parent']}>
+                <InfoView type="menu" />
+              </ProtectedRoute>
+            } 
+          />
+          
+          {/* Catch all */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </PullToRefresh>
     </div>
   );
 }

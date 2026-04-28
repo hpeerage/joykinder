@@ -1,5 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import gallery1 from '../assets/images/gallery_1.png';
+import gallery2 from '../assets/images/gallery_2.png';
+import gallery3 from '../assets/images/gallery_3.png';
 
 const useStore = create(
   persist(
@@ -11,9 +14,9 @@ const useStore = create(
       setSelectedImage: (image) => set({ selectedImage: image }),
       
       galleryImages: [
-        { id: 1, src: '/src/assets/images/gallery_1.png', title: '손끝 활동', desc: '의지와 창의성을 키우는 시간', category: 'activity' },
-        { id: 2, src: '/src/assets/images/gallery_2.png', title: '숲 나들이', desc: '자연의 리듬을 배우는 시간', category: 'forest' },
-        { id: 3, src: '/src/assets/images/gallery_3.png', title: '건강한 식사', desc: '몸과 마음을 채우는 시간', category: 'food' },
+        { id: 1, src: gallery1, title: '손끝 활동', desc: '의지와 창의성을 키우는 시간', category: 'activity' },
+        { id: 2, src: gallery2, title: '숲 나들이', desc: '자연의 리듬을 배우는 시간', category: 'forest' },
+        { id: 3, src: gallery3, title: '건강한 식사', desc: '몸과 마음을 채우는 시간', category: 'food' },
       ],
       galleryCategories: [
         { id: 'forest', name: '숲 활동' },

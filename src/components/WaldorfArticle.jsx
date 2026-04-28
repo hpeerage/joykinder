@@ -1,5 +1,7 @@
 import React from 'react';
 import useStore from '../store/useStore';
+import gallery1 from '../assets/images/gallery_1.png';
+import gallery2 from '../assets/images/gallery_2.png';
 
 const WaldorfArticle = () => {
   const articleData = useStore(state => state.content.waldorfArticle);
@@ -46,14 +48,14 @@ const WaldorfArticle = () => {
                 {/* Fixed images for specific takeaways */}
                 {index === 0 && (
                   <figure className="article-image full-width" style={{ marginTop: '40px', width: '100%' }}>
-                     <img src="/src/assets/images/gallery_1.png" alt="아이들의 숲 속 활동" />
+                     <img src={gallery1} alt="아이들의 숲 속 활동" />
                      <figcaption>숲은 아이들이 자신의 의지를 키워가는 가장 완벽한 교실입니다.</figcaption>
                   </figure>
                 )}
                 
                 {isRightImage && (
                   <figure className="article-image side-image">
-                     <img src="/src/assets/images/gallery_2.png" alt="발도르프 수채화" />
+                     <img src={gallery2} alt="발도르프 수채화" />
                   </figure>
                 )}
               </div>

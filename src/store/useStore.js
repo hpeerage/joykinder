@@ -189,8 +189,8 @@ const useStore = create(
 
       // Students & Child Cards
       students: [
-        { id: 'jihu', name: '김지후', classId: 'sunshine', parentId: 'parent1', allergies: '땅콩, 우유', notes: '최근 감기 기운이 있어 식사량이 줄었습니다.', photo: '/src/assets/images/gallery_1.png' },
-        { id: 'seoyeon', name: '이서연', classId: 'sunshine', parentId: 'parent2', allergies: '없음', notes: '숲 활동을 아주 좋아합니다.', photo: '/src/assets/images/gallery_2.png' },
+        { id: 'jihu', name: '김지후', classId: 'sunshine', parentId: 'parent1', allergies: '땅콩, 우유', notes: '최근 감기 기운이 있어 식사량이 줄었습니다.', photo: gallery1 },
+        { id: 'seoyeon', name: '이서연', classId: 'sunshine', parentId: 'parent2', allergies: '없음', notes: '숲 활동을 아주 좋아합니다.', photo: gallery2 },
       ],
       updateStudent: (id, data) => set((state) => ({
         students: state.students.map(s => s.id === id ? { ...s, ...data } : s)
@@ -246,7 +246,7 @@ const useStore = create(
       }))
     }),
     {
-      name: 'joykinder-storage-v5', // v5로 캐시 초기화 및 이미지 경로 갱신
+      name: 'joykinder-storage-v6', // v6로 캐시 초기화 (children photo 경로 갱신)
     }
   )
 );

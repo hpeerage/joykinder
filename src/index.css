@@ -205,6 +205,25 @@ header:not(.scrolled) .nav-links a {
     color: white;
 }
 
+.login-link a {
+    background-color: var(--secondary-color);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.login-link a:hover {
+    background-color: #d97b29;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.login-link a::after {
+    display: none !important;
+}
+
 .nav-links a::after {
     content: '';
     position: absolute;

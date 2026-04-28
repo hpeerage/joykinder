@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import useAuthStore from '../store/useAuthStore';
 import logoImg from '../assets/images/logo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, user } = useAuthStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +34,14 @@ const Header = () => {
           <li><a href="#rhythm" onClick={() => setIsMenuOpen(false)}>하루일과</a></li>
           <li><a href="#environment" onClick={() => setIsMenuOpen(false)}>교육환경</a></li>
           <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>오시는길</a></li>
+          <li className="login-link">
+            <Link 
+              to={isAuthenticated ? (user?.role === 'admin' ? '/admin' : user?.role === 'teacher' ? '/teacher' : '/parent') : '/admin/login'} 
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {isAuthenticated ? '내 대시보드' : '통합 관리 포털'}
+            </Link>
+          </li>
         </ul>
         <div 
           className={`mobile-menu-btn ${isMenuOpen ? 'active' : ''}`} 

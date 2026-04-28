@@ -213,7 +213,7 @@ const useStore = create(
           authorName: '햇살반 선생님', 
           authorRole: 'teacher',
           content: '오늘 따뜻한 봄 햇살 아래 아이들과 텃밭에 물을 주었습니다. 작은 씨앗이 싹트는 모습을 보며 다들 신기해하네요. 🌱', 
-          image: '/src/assets/images/gallery_3.png',
+          image: gallery3,
           date: '2026-04-28T11:00:00Z', 
           likes: 5,
           comments: [
@@ -246,7 +246,7 @@ const useStore = create(
       }))
     }),
     {
-      name: 'joykinder-storage-v6', // v6로 캐시 초기화 (children photo 경로 갱신)
+      name: 'joykinder-storage-v7', // v7로 캐시 초기화 (snsPosts 이미지 갱신)
     }
   )
 );

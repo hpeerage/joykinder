@@ -246,7 +246,7 @@ const useStore = create(
       }))
     }),
     {
-      name: 'joykinder-storage-v4', // v4로 캐시 초기화 및 구조 확장
+      name: 'joykinder-storage-v5', // v5로 캐시 초기화 및 이미지 경로 갱신
     }
   )
 );

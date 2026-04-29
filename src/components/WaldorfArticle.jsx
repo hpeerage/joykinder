@@ -2,6 +2,9 @@ import React from 'react';
 import useStore from '../store/useStore';
 import gallery1 from '../assets/images/gallery_1.png';
 import gallery2 from '../assets/images/gallery_2.png';
+import gallery4 from '../assets/images/gallery_4.png';
+import gallery5 from '../assets/images/gallery_5.png';
+import gallery6 from '../assets/images/gallery_6.png';
 
 const WaldorfArticle = () => {
   const articleData = useStore(state => state.content.waldorfArticle);
@@ -26,41 +29,34 @@ const WaldorfArticle = () => {
             ))}
           </div>
 
-          {articleData.takeaways.map((item, index) => {
-            const isRightImage = index === 3; // Takeaway 04 has an image on the right
-            const hasQuote = index === 0; // Takeaway 01 has a quote
-            
-            return (
-              <div key={index} className={`article-takeaway ${isRightImage ? 'image-right' : ''}`}>
-                <div className="takeaway-text">
-                  <span className="takeaway-num">{item.num}</span>
-                  <h3>{item.title}</h3>
-                  {item.desc.map((p, idx) => (
-                    <p key={idx} dangerouslySetInnerHTML={{ __html: p }}></p>
-                  ))}
-                  {hasQuote && item.quote && (
-                    <blockquote className="article-quote">
-                      "{item.quote}"
-                    </blockquote>
-                  )}
+          <div className="takeaway-cards-grid">
+            {articleData.takeaways.map((item, index) => {
+              // 5개의 카드에 각각 썸네일 이미지 매핑
+              const thumbnails = [gallery1, gallery4, gallery5, gallery2, gallery6];
+              const thumbnailSrc = thumbnails[index];
+              const hasQuote = index === 0;
+              
+              return (
+                <div key={index} className="takeaway-card">
+                  <div className="takeaway-thumbnail">
+                    <img src={thumbnailSrc} alt={item.title} />
+                  </div>
+                  <div className="takeaway-text">
+                    <span className="takeaway-num">{item.num}</span>
+                    <h3>{item.title}</h3>
+                    {item.desc.map((p, idx) => (
+                      <p key={idx} dangerouslySetInnerHTML={{ __html: p }}></p>
+                    ))}
+                    {hasQuote && item.quote && (
+                      <blockquote className="article-quote">
+                        "{item.quote}"
+                      </blockquote>
+                    )}
+                  </div>
                 </div>
-                
-                {/* Fixed images for specific takeaways */}
-                {index === 0 && (
-                  <figure className="article-image full-width" style={{ marginTop: '40px', width: '100%' }}>
-                     <img src={gallery1} alt="아이들의 숲 속 활동" />
-                     <figcaption>숲은 아이들이 자신의 의지를 키워가는 가장 완벽한 교실입니다.</figcaption>
-                  </figure>
-                )}
-                
-                {isRightImage && (
-                  <figure className="article-image side-image">
-                     <img src={gallery2} alt="발도르프 수채화" />
-                  </figure>
-                )}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
 
           <div className="article-comparison">
             <h3>발도르프 vs 타 교육 모델 비교</h3>

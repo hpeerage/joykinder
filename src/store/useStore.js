@@ -195,6 +195,9 @@ const useStore = create(
       updateStudent: (id, data) => set((state) => ({
         students: state.students.map(s => s.id === id ? { ...s, ...data } : s)
       })),
+      addStudent: (newStudent) => set((state) => ({
+        students: [...state.students, { id: `child_${Date.now()}`, ...newStudent }]
+      })),
 
       // Child Card Notes (1:1 Communication)
       studentNotes: [
@@ -246,7 +249,7 @@ const useStore = create(
       }))
     }),
     {
-      name: 'joykinder-storage-v7', // v7로 캐시 초기화 (snsPosts 이미지 갱신)
+      name: 'joykinder-storage-v8', // v8로 캐시 초기화 (다중 자녀 및 사진 기능 추가)
     }
   )
 );
